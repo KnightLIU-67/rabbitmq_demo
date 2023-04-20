@@ -18,8 +18,9 @@ public class RabbitmqConfig implements InitializingBean {
 
     @Resource
     private RabbitTemplate rabbitTemplate;
-    private static String exchangeName = "Modbus4jPEXUtils_upsBatchRead";
-    private static String queueName = "QueueName";
+    public static final String TEST_EN = "TEST_exchangeName";
+    public static final String TEST_QN = "TEST_queueName";
+    public static final String TEST_RK = "TEST_routingKey";
 
     /**
      * 声明交换机
@@ -27,7 +28,7 @@ public class RabbitmqConfig implements InitializingBean {
      */
     @Bean
     public FanoutExchange exchange(){
-        return new FanoutExchange(exchangeName,true,false);
+        return new FanoutExchange(TEST_EN,true,false);
     }
 
     /**
@@ -36,7 +37,7 @@ public class RabbitmqConfig implements InitializingBean {
      */
     @Bean
     public Queue queue(){
-        return new Queue(queueName,true,false,false);
+        return new Queue(TEST_QN,true,false,false);
     }
 
     /**
